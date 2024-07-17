@@ -48,6 +48,10 @@ public class CameraController : MonoBehaviour
         //  Apply speed
         transform.position += moveSpeed * Time.deltaTime;
 
+        //  Apply constraints
+        if (transform.position.y > 100.0f)
+            moveSpeed.y -= 1.0f;
+
     }
 
     float xRotation;
@@ -65,9 +69,7 @@ public class CameraController : MonoBehaviour
         xRotation -= mouseY;
         yRotation += mouseX;
 
-        xRotation = Mathf.Clamp(xRotation, -80f, 80f);                            //  Limiting camera rotation
+        xRotation = Mathf.Clamp(xRotation, 10f, 90f);                            //  Limiting camera rotation
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(xRotation, yRotation, 0f), mouseSmoothingSpeed * Time.deltaTime);     //  Rotating camera
-
-
     }
 }
