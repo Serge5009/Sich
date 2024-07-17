@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         UpdateMove();
+        UpdateRotation();
     }
 
     void UpdateMove()
@@ -40,6 +41,30 @@ public class CameraController : MonoBehaviour
 
         //  Apply speed
         transform.position += moveSpeed * Time.deltaTime;
+
+    }
+
+    float xRotation;
+    float yRotation;
+    void UpdateRotation()
+    {
+        //  If mouse button isn't pressed - skip rotation
+        if(!Input.GetMouseButton(1))
+        {
+            return;
+        }
+
+        //  Mouse
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime; //  Getting mouse position for player
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime; //  Getting mouse position for camera
+
+        xRotation -= mouseY;
+        yRotation += mouseX;
+
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);                              //  Limiting camera rotation
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);     //  Rotating camera
+
+        //transform.Rotate(Vector3.up * mouseX);                      //  Rotating camera horizontaly
 
     }
 }
