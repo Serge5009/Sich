@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public float moveSensitivity = 100.0f;
     public float moveSmoothingSpeed = 1.0f;
     public float mouseSensitivity = 100.0f;
+    public float mouseSmoothingSpeed = 1.0f;
     public float scrollSensitivity = 100.0f;
 
 
@@ -65,7 +66,7 @@ public class CameraController : MonoBehaviour
         yRotation += mouseX;
 
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);                            //  Limiting camera rotation
-        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);     //  Rotating camera
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(xRotation, yRotation, 0f), mouseSmoothingSpeed * Time.deltaTime);     //  Rotating camera
 
 
     }
