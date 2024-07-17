@@ -28,13 +28,15 @@ public class CameraController : MonoBehaviour
         //  Use keyboard to set the axis
         moveTargetSpeed = new();
         if (Input.GetKey(KeyCode.W))
-            moveTargetSpeed.z += 1.0f;
+            moveTargetSpeed += transform.forward;
         if (Input.GetKey(KeyCode.S))
-            moveTargetSpeed.z -= 1.0f;
+            moveTargetSpeed -= transform.forward;
         if (Input.GetKey(KeyCode.D))
-            moveTargetSpeed.x += 1.0f;
+            moveTargetSpeed += transform.right;
         if (Input.GetKey(KeyCode.A))
-            moveTargetSpeed.x -= 1.0f;
+            moveTargetSpeed -= transform.right;
+
+        moveTargetSpeed.y = 0;
 
         //  Lerp camera speed to the target
         moveSpeed = Vector3.Lerp(moveSpeed, moveTargetSpeed * moveSensitivity, moveSmoothingSpeed * Time.deltaTime);
