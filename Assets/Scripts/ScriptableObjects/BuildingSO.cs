@@ -6,4 +6,6 @@ public class BuildingSO : ScriptableObject
     public BUILDING buildID;
     public string buildName;
     public Sprite buildImage;
+
+    public GameObject buildModel;
 }
