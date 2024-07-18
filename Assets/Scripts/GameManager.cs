@@ -29,6 +29,22 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            MouseClickCheck();
+        }
     }
+
+    void MouseClickCheck()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            Clickable hitClick = hit.transform.GetComponent<Clickable>();
+            if (hitClick)
+                hitClick.OnClickableClick();
+        }
+    }
+
 }
