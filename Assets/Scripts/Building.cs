@@ -5,6 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public string buildName;
+    public BuildingSO buildingSO;
 
     void Start()
     {
@@ -15,5 +16,10 @@ public class Building : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void BuildingBuild()
+    {
+
     }
 }

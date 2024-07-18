@@ -31,6 +31,10 @@ public class BuildMode : MonoBehaviour
         //  Project building if possible
         if (isBuildModeActive && cursorPositionOnTerrain != Vector3.zero)
             ProjectBuildingModel();
+
+        //  Try to build on mouse click
+        if (Input.GetMouseButtonDown(0))
+            TryToBuild();
     }
 
     public void EnterBuildMode(BuildingSO bToBuild)
@@ -62,7 +66,7 @@ public class BuildMode : MonoBehaviour
             }
         }
 
-        Debug.Log(cursorPositionOnTerrain);
+        //Debug.Log(cursorPositionOnTerrain);
     }
 
     void ProjectBuildingModel()
@@ -74,5 +78,24 @@ public class BuildMode : MonoBehaviour
         }
 
         buildingProjection.transform.position = cursorPositionOnTerrain;
+    }
+
+    void TryToBuild()
+    {
+        Build();
+
+        
+    }
+
+    void Build()
+    {
+        //  Creating the building
+        GameObject newBuilding = Instantiate(buildingToBuild.buildModel, cursorPositionOnTerrain, Quaternion.identity);     //  Instantiate the model
+        Building newBuildingScript = newBuilding.AddComponent<Building>();                                                  //  Add Building script
+        newBuildingScript.buildingSO = buildingToBuild;                                                                     //  Attach data
+        newBuildingScript.BuildingBuild();                                                                                  //  Trigger the build function
+
+        //  Exiting build mode
+        ExitBuildMode();
     }
 }
