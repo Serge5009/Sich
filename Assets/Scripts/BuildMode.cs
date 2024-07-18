@@ -6,6 +6,7 @@ public class BuildMode : MonoBehaviour
 {
     public bool isBuildModeActive = false;
 
+    public BuildingSO buildingToBuild;
 
     //  References
     public GameManager gameManager;
