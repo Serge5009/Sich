@@ -543,6 +543,17 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!114 &734266171 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5612918798129549254, guid: 32c69c85837d0bb44beb9ec7afc974c2, type: 3}
+  m_PrefabInstance: {fileID: 7647285147585327635}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48b09d17797b114eaa2ef1f56d1cc50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &870151499
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,6 +727,7 @@ GameObject:
   - component: {fileID: 1433983335}
   - component: {fileID: 1433983334}
   - component: {fileID: 1433983338}
+  - component: {fileID: 1433983339}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -819,6 +831,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54b977a89fe090349a07e61fa28b2a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cType: 0
+--- !u!114 &1433983339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433983333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27462986be0947144bd7ea5ca0f2bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1694874025
@@ -1036,6 +1061,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2902025150462636574, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -62.069946
+      objectReference: {fileID: 0}
     - target: {fileID: 4123314794163653978, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1108,6 +1137,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6130955626679993546, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 734266171}
     - target: {fileID: 7137162248098634131, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -1117,6 +1150,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
+--- !u!114 &5348901120587873149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6130955626679993546, guid: 03bda1830fb1bdf40a1671de7d3a673c, type: 3}
+  m_PrefabInstance: {fileID: 5348901120587873148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c11a973f50bc646be4af72ac419804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7647285147585327635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1165,6 +1209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5612918798129549254, guid: 32c69c85837d0bb44beb9ec7afc974c2, type: 3}
+      propertyPath: uiController
+      value: 
+      objectReference: {fileID: 5348901120587873149}
     - target: {fileID: 6674572276061516221, guid: 32c69c85837d0bb44beb9ec7afc974c2, type: 3}
       propertyPath: m_Name
       value: GameManager

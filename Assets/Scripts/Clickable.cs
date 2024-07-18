@@ -16,7 +16,12 @@ public class Clickable : MonoBehaviour
 
     public void OnClickableClick()
     {
-        Debug.Log(name);
+        //Debug.Log(name);
         GameManager.gameManager.focusedObject = gameObject;
+
+        if(cType == C_TYPE.BUILDING)
+        {
+            UIController.uiController.activeBuilding = GetComponent<Building>();
+        }
     }
 }

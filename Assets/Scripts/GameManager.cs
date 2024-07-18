@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public GameObject focusedObject;
 
 
+    //  References
+    [SerializeField] UIController uiController;
+
     void Start()
     {
         
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
     void MouseClickCheck()
     {
         focusedObject = null;
-
+        uiController.activeBuilding = null;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
