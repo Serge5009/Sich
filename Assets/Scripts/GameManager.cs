@@ -81,3 +81,10 @@ public enum RES
 
     NUM_RES
 }
+
+public enum BUILDING
+{
+
+
+
+}
