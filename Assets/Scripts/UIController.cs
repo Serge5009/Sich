@@ -42,7 +42,6 @@ public class UIController : MonoBehaviour
         buildButton.onClick.AddListener(OnBuildButtonClick);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (activeBuilding)
