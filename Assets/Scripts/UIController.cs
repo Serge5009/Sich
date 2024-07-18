@@ -24,10 +24,14 @@ public class UIController : MonoBehaviour
 
     [SerializeField] GameObject buildingUI;
     [SerializeField] GameObject buildModeUI;
+    [SerializeField] GameObject BuildingPanel;
     [HideInInspector] public Building activeBuilding;
 
     //  Buttons
     [SerializeField] Button buildButton;
+
+    //  Prefabs
+    [SerializeField] GameObject BuildPannelButtonPrefab;
 
     //  References
     [SerializeField] GameManager gameManager;
@@ -51,7 +55,24 @@ public class UIController : MonoBehaviour
 
     void OnBuildButtonClick()
     {
-        //Debug.Log("Build");
-        buildMode.EnterBuildMode();
+        //  Activate Build Panel
+        BuildingPanel.SetActive(true);
+
+        //  Destroy All existing objects of the panel
+        foreach (Transform bpChild in BuildingPanel.transform)
+        {
+            Destroy(bpChild.gameObject);
+        }
+
+        //  Populate new ones
+        foreach (BuildingSO bSO in gameManager.allBuildings)
+        {
+            //  Instantiate a button
+            GameObject newButton = Instantiate(BuildPannelButtonPrefab, BuildingPanel.transform);
+            //  Attach data
+            newButton.GetComponent<BuildPanelButton>().buildingSO = bSO;
+            newButton.GetComponent<BuildPanelButton>().buildMode = buildMode;
+        }
+
     }
 }

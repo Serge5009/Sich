@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 3030059001045036234}
   - component: {fileID: 2134303686869537674}
   m_Layer: 5
-  m_Name: BuildingPanel
+  m_Name: BuildingExtendedUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,8 +1159,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingUI: {fileID: 6866716222031761319}
   buildModeUI: {fileID: 8930092609515645862}
+  BuildingPanel: {fileID: 1673007462460403538}
   activeBuilding: {fileID: 0}
   buildButton: {fileID: 351980384551456597}
+  BuildPannelButtonPrefab: {fileID: 3794830997744336549, guid: 5dcf73e7d45883844a4d099058b25d40, type: 3}
   gameManager: {fileID: 0}
   buildMode: {fileID: 0}
 --- !u!1 &8148782867155486252

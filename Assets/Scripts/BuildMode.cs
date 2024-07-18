@@ -22,8 +22,9 @@ public class BuildMode : MonoBehaviour
             ExitBuildMode();
     }
 
-    public void EnterBuildMode()
+    public void EnterBuildMode(BuildingSO bToBuild)
     {
+        buildingToBuild = bToBuild;
         isBuildModeActive = true;
     }
 
