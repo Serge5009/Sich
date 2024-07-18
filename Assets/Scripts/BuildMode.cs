@@ -17,11 +17,17 @@ public class BuildMode : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ExitBuildMode();
     }
 
     public void EnterBuildMode()
     {
         isBuildModeActive = true;
+    }
+
+    public void ExitBuildMode()
+    {
+        isBuildModeActive = false;
     }
 }
