@@ -8,6 +8,7 @@ public class BuildMode : MonoBehaviour
 
     public BuildingSO buildingToBuild;
     public Vector3 cursorPositionOnTerrain;
+    GameObject buildingProjection;
 
     //  References
     public GameManager gameManager;
@@ -26,17 +27,26 @@ public class BuildMode : MonoBehaviour
         //  Update location of cursor on the terrain
         if (isBuildModeActive)
             UpdateCursorPosition();
+
+        //  Project building if possible
+        if (isBuildModeActive && cursorPositionOnTerrain != Vector3.zero)
+            ProjectBuildingModel();
     }
 
     public void EnterBuildMode(BuildingSO bToBuild)
     {
         buildingToBuild = bToBuild;
         isBuildModeActive = true;
+
+        //  Reset mouse position
+        cursorPositionOnTerrain = Vector3.zero;
     }
 
     public void ExitBuildMode()
     {
         isBuildModeActive = false;
+        //  Destroy old building projection
+        Destroy(buildingProjection);
     }
 
     void UpdateCursorPosition()
@@ -53,5 +63,16 @@ public class BuildMode : MonoBehaviour
         }
 
         Debug.Log(cursorPositionOnTerrain);
+    }
+
+    void ProjectBuildingModel()
+    {
+        //  Create model if doesn't exist
+        if(!buildingProjection)
+        {
+            buildingProjection = Instantiate(buildingToBuild.buildModel, cursorPositionOnTerrain, Quaternion.identity);
+        }
+
+        buildingProjection.transform.position = cursorPositionOnTerrain;
     }
 }
