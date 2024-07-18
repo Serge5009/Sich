@@ -19,4 +19,9 @@ public class BuildMode : MonoBehaviour
     {
         
     }
+
+    public void EnterBuildMode()
+    {
+        isBuildModeActive = true;
+    }
 }

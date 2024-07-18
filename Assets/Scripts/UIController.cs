@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     #endregion
 
     [SerializeField] GameObject buildingUI;
+    [SerializeField] GameObject buildModeUI;
     [HideInInspector] public Building activeBuilding;
 
     //  Buttons
@@ -30,6 +31,7 @@ public class UIController : MonoBehaviour
 
     //  References
     [SerializeField] GameManager gameManager;
+    [SerializeField] BuildMode buildMode;
 
     void Start()
     {
@@ -43,10 +45,13 @@ public class UIController : MonoBehaviour
             buildingUI.SetActive(true);
         else
             buildingUI.SetActive(false);
+
+        buildModeUI.SetActive(buildMode.isBuildModeActive);
     }
 
     void OnBuildButtonClick()
     {
-        Debug.Log("Build");
+        //Debug.Log("Build");
+        buildMode.EnterBuildMode();
     }
 }

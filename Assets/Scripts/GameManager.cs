@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     //  References
     [SerializeField] UIController uiController;
+    [SerializeField] BuildMode buildMode;
 
     void Start()
     {
