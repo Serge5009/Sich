@@ -66,3 +66,16 @@ public enum C_TYPE
 
     NUM_C_TYPES
 }
+
+public enum RES
+{
+    WOOD,
+    STRAW,
+    STONE,
+    METAL,
+    FOOD,
+
+
+
+    NUM_RES
+}
