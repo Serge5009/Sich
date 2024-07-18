@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject focusedObject;
 
+    //  Lists
+    [SerializeField] List<ResourceSO> allResources;  //  Lists all resources that exist in game
 
     //  References
     [SerializeField] UIController uiController;
