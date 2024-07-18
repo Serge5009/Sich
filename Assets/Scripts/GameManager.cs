@@ -87,6 +87,7 @@ public enum RES
 public enum BUILDING
 {
     HOUSE,
+    MILL,
 
-
+    NUM_BUILDINGS
 }
