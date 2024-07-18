@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+
+    public GameObject focusedObject;
+
+
     void Start()
     {
         
@@ -37,6 +41,9 @@ public class GameManager : MonoBehaviour
 
     void MouseClickCheck()
     {
+        focusedObject = null;
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000))
@@ -45,6 +52,14 @@ public class GameManager : MonoBehaviour
             if (hitClick)
                 hitClick.OnClickableClick();
         }
+
     }
 
+}
+
+public enum C_TYPE
+{
+    BUILDING,
+
+    NUM_C_TYPES
 }
