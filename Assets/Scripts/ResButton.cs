@@ -26,6 +26,7 @@ public class ResButton : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(OnResButtonClick);
 
         UpdateButtonUI();
+        CollapsePanel();
     }
 
     void Update()
@@ -51,10 +52,32 @@ public class ResButton : MonoBehaviour
 
     void ExtendPanel()
     {
+        //  Make visible
+        extendedPanel.SetActive(true);
 
+        //  Populate all resources
+        foreach (ResourceSO rSO in gameManager.allResources)
+        {
+            //  Instantiate a tab
+            GameObject newTab = Instantiate(resInfoPrefab, extendedPanel.transform);
+            //  Attach data
+            newTab.GetComponent<ResInfo>().resourceSO = rSO;
+        }
+
+
+        isExtended = true;
     }
     void CollapsePanel()
     {
+        //  Destroy All existing objects of the panel
+        foreach (Transform panelChild in extendedPanel.transform)
+        {
+            Destroy(panelChild.gameObject);
+        }
 
+        //  Make invisible
+        extendedPanel.SetActive(false);
+
+        isExtended = false;
     }
 }
