@@ -33,7 +33,7 @@ public class BuildMode : MonoBehaviour
             ProjectBuildingModel();
 
         //  Try to build on mouse click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isBuildModeActive)
             TryToBuild();
     }
 

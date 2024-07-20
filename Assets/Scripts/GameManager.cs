@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject focusedObject;
 
+    //  Resources
+    public int population;
+    public List<int> resources;
+
     //  Lists
     public List<ResourceSO> allResources;  //  Lists all resources that exist in the game
     public List<BuildingSO> allBuildings;  //  Lists all buildings that exist in the game
@@ -35,7 +39,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        //  Compare resource list
+        if (resources.Count != (int)RES.NUM_RES)
+            Debug.LogWarning("Resource list count warning!");
     }
 
     void Update()

@@ -6,6 +6,7 @@ public class Building : MonoBehaviour
 {
     public string buildName;
     public BuildingSO buildingSO;
+    public BUILDING buildID;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class Building : MonoBehaviour
 
     public void BuildingBuild()
     {
-
+        buildName = buildingSO.buildName;
+        buildID = buildingSO.buildID;
     }
 }
