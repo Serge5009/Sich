@@ -31,7 +31,7 @@ public class ResButton : MonoBehaviour
 
     void Update()
     {
-        
+        valueText.text = gameManager.resources[(int)resourceSO.resID].ToString();
     }
 
     void OnResButtonClick()
