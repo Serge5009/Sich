@@ -8,6 +8,8 @@ public class Building : MonoBehaviour
     public BuildingSO buildingSO;
     public BUILDING buildID;
 
+    
+
     void Start()
     {
         
