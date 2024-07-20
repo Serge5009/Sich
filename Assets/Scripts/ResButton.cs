@@ -6,11 +6,15 @@ using TMPro;
 
 public class ResButton : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI valueText;
-    [SerializeField] Image resImage;
 
     public ResourceSO resourceSO;
 
+    public bool isExtended;
+
+    [SerializeField] GameObject resInfoPrefab;
+    [SerializeField] GameObject extendedPanel;
+    [SerializeField] TextMeshProUGUI valueText;
+    [SerializeField] Image resImage;
 
     //  References
     GameManager gameManager;
@@ -31,7 +35,12 @@ public class ResButton : MonoBehaviour
 
     void OnResButtonClick()
     {
+        UpdateButtonUI();
 
+        if (isExtended)
+            CollapsePanel();
+        else
+            ExtendPanel();
     }
 
     void UpdateButtonUI()
@@ -40,4 +49,12 @@ public class ResButton : MonoBehaviour
         valueText.text = gameManager.resources[(int)resourceSO.resID].ToString();
     }
 
+    void ExtendPanel()
+    {
+
+    }
+    void CollapsePanel()
+    {
+
+    }
 }
