@@ -47,7 +47,7 @@ public class Pop : MonoBehaviour
 
     }
 
-    public void DepositResourceToStorage()
+    public void DepositAllResourceToStorage()
     {
         gameManager.AddResource(currentRes, carrying);
 

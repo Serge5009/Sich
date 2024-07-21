@@ -16,5 +16,6 @@ MonoBehaviour:
   buildName: Warehouse
   buildImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   buildModel: {fileID: 5372272500681437375, guid: 093333e414bc73841b1819db0df3a034, type: 3}
+  accessToStorage: 1
   constructCost: 3200000000000000000000000000000000000000
   constructLabourCost: 10
