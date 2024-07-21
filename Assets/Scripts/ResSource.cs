@@ -23,6 +23,7 @@ public class ResSource : MonoBehaviour
     {
         if (amountLeft == 0)
         {
+            gameManager.resSources.Remove(this);
             Destroy(gameObject);
         }
 

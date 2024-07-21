@@ -264,3 +264,5 @@ MonoBehaviour:
   currentRes: 0
   carryCapacity: 10
   popSpeed: 5
+  interactDistance: 1
+  gameManager: {fileID: 0}
