@@ -96,6 +96,10 @@ public class BuildMode : MonoBehaviour
         newBuildingScript.buildingSO = buildingToBuild;                                                                     //  Attach data
         newBuildingScript.BuildingBuild();                                                                                  //  Trigger the build function
 
+        Construction newConstructScript = newBuilding.AddComponent<Construction>();                                         //  Add Construction script
+        newConstructScript.buildingSO = buildingToBuild;                                                                    //  Attach data
+
+
         //  Exiting build mode
         ExitBuildMode();
     }
