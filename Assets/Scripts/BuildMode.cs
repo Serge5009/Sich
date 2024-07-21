@@ -15,7 +15,8 @@ public class BuildMode : MonoBehaviour
 
     void Start()
     {
-        
+        gameManager = GameManager.gameManager;
+
     }
 
     void Update()
