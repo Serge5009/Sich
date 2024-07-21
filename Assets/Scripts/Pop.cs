@@ -19,6 +19,7 @@ public class Pop : MonoBehaviour
     //  Extra info
     public Building nearestWarehouse;
     public ResSource minedResource;
+    public GameObject headingTo;
 
     //  References
     GameManager gameManager;
@@ -64,40 +65,8 @@ public class Pop : MonoBehaviour
 
                 break;
             case POP_STATE.MINE:
-
-                //  If inventory not full
-                if(carryCapacity > carrying)
-                {
-                    //  If within range of a target
-                    if (Vector3.Distance(transform.position, minedResource.transform.position) <= interactDistance)
-                    {
-                        //  Mine it
-                        carrying += minedResource.TakeResource(carryCapacity - carrying);
-                    }
-                    //  If too far - head to
-                    else
-                    {
-                        transform.position += (minedResource.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
-                    }
-                }
-                //  If inventory full
-                else
-                {
-                    //  If within range of a warehouse
-                    if (Vector3.Distance(transform.position, nearestWarehouse.transform.position) <= interactDistance)
-                    {
-                        //  Deposit
-                        DepositAllResourceToStorage();
-                    }
-                    //  If too far - head to
-                    else
-                    {
-                        transform.position += (nearestWarehouse.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
-                    }
-                }
-                
-
-
+                UpdateMineState();
+                               
                 break;
             case POP_STATE.MOVE_TO:
                 transform.position += (target.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
@@ -106,8 +75,54 @@ public class Pop : MonoBehaviour
                 break;
         }
 
-
+        if(headingTo)
+            transform.position += (headingTo.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
     }
+
+    void UpdateMineState()
+    {
+        //  If no resource to mine - try to find
+        if (!minedResource)
+            minedResource = FindClosestResource(transform.position, currentRes);
+        //  If still nothing found - go idle
+        if (!minedResource)
+        {
+            popState = POP_STATE.IDLE;
+            return;
+        }
+
+        //  If inventory not full
+        if (carryCapacity > carrying)
+        {
+            //  If within range of a target
+            if (Vector3.Distance(transform.position, minedResource.transform.position) <= interactDistance)
+            {
+                //  Mine it
+                carrying += minedResource.TakeResource(carryCapacity - carrying);
+            }
+            //  If too far - head to
+            else
+            {
+                headingTo = minedResource.gameObject;
+            }
+        }
+        //  If inventory full
+        else
+        {
+            //  If within range of a warehouse
+            if (Vector3.Distance(transform.position, nearestWarehouse.transform.position) <= interactDistance)
+            {
+                //  Deposit
+                DepositAllResourceToStorage();
+            }
+            //  If too far - head to
+            else
+            {
+                headingTo = nearestWarehouse.gameObject;
+            }
+        }
+    }
+
 
     public void DepositAllResourceToStorage()
     {
@@ -160,6 +175,28 @@ public class Pop : MonoBehaviour
 
         return closest;
     }
+    public ResSource FindClosestResource(Vector3 startLocation, RES resType)
+    {
+        ResSource closest = null;
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (ResSource resSource in gameManager.resSources)
+        {
+            if (resSource.resType != resType)
+                continue;
+
+            float dist = Vector3.Distance(startLocation, resSource.transform.position);
+            if (dist < shortestDistance)
+            {
+                closest = resSource;
+                shortestDistance = dist;
+            }
+        }
+
+        return closest;
+    }
+
+
 
 }
 
