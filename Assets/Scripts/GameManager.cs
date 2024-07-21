@@ -127,6 +127,7 @@ public enum BUILDING
     HOUSE,
     MILL,
     WAREHOUSE,
+    MAIDAN,
 
     NUM_BUILDINGS
 }
