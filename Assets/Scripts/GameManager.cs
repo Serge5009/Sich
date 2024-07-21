@@ -68,6 +68,25 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void AddResource(RES resType, int amount)
+    {
+        //  Add the resource
+        resources[(int)resType] += amount;
+
+        //  TO DO: add capacity check
+    }
+
+    public bool TryTakeResource(RES resType, int amount)
+    {
+        //  If not enough - fail
+        if (resources[(int)resType] < amount)
+            return false;
+
+        //  Take res and return success
+        resources[(int)resType] -= amount;
+        return true;
+    }
+
 }
 
 public enum C_TYPE

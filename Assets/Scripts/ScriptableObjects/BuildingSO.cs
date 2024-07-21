@@ -11,6 +11,8 @@ public class BuildingSO : ScriptableObject
 
     public GameObject buildModel;
 
+    public bool accessToStorage;
+
     public List<int> constructCost;    //  Cost to build
     public int constructLabourCost;    //  Labour to build
 
