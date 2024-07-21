@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resID: 4
   resName: Food
-  resImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  resImage: {fileID: 21300000, guid: 19cd1853ecb148b4ebdbb4dcb041fe84, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resID: 1
   resName: Straw
-  resImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  resImage: {fileID: 21300000, guid: 2337bec33c1eb5d448e6035259aeaaec, type: 3}

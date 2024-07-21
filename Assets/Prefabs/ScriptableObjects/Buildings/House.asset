@@ -16,3 +16,5 @@ MonoBehaviour:
   buildName: House
   buildImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   buildModel: {fileID: 5372272500681437375, guid: 521b02a71de92d04bad3e42f72d5bb12, type: 3}
+  constructCost: 3200000014000000000000000000000000000000
+  constructLabourCost: 10

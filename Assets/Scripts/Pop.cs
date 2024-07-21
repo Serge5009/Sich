@@ -9,6 +9,10 @@ public class Pop : MonoBehaviour
     public GameObject target;
     public POP_STATE popState;
 
+    public int carrying;
+    public RES currentRes;
+
+    public int carryCapacity;
     public float popSpeed;
 
     void Start()

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resID: 0
   resName: Wood
-  resImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  resImage: {fileID: 21300000, guid: 13aa624525018934e88b85ffc344b3c5, type: 3}

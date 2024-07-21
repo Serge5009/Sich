@@ -94,6 +94,7 @@ public enum BUILDING
 {
     HOUSE,
     MILL,
+    WAREHOUSE,
 
     NUM_BUILDINGS
 }

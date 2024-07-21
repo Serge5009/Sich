@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resID: 3
   resName: Metal
-  resImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  resImage: {fileID: 21300000, guid: 410c7acbca18dce4194ede9f8ff11764, type: 3}
