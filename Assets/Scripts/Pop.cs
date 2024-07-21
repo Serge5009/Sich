@@ -23,16 +23,37 @@ public class Pop : MonoBehaviour
     //  References
     GameManager gameManager;
 
+    //  Periodic update
+    float periodicUpdateTime = 1;
+    float periodicUpdateTimer = 0;
+
     void Start()
     {
         gameManager = GameManager.gameManager;
 
+        //  Randomization
+        periodicUpdateTime = Random.Range(periodicUpdateTime, periodicUpdateTime * 1.05f);
+        popSpeed = Random.Range(popSpeed, popSpeed * 1.05f);
 
+        PeriodicUpdate();
     }
 
     void Update()
     {
         UpdateMovement();
+
+        //  Handle an update that happens once every second
+        periodicUpdateTimer += Time.deltaTime;
+        if(periodicUpdateTimer >= periodicUpdateTime)
+        {
+            periodicUpdateTimer = 0;
+            PeriodicUpdate();
+        }
+    }
+
+    void PeriodicUpdate()
+    {
+        nearestWarehouse = FindClosestWarehouse(transform.position);
     }
 
     void UpdateMovement()
