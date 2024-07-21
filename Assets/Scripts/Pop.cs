@@ -37,6 +37,11 @@ public class Pop : MonoBehaviour
             case POP_STATE.IDLE:
 
                 break;
+            case POP_STATE.MINE:
+                
+
+
+                break;
             case POP_STATE.MOVE_TO:
                 transform.position += (target.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
                 break;
@@ -86,6 +91,7 @@ public class Pop : MonoBehaviour
 public enum POP_STATE
 {
     IDLE,
+    MINE,
     MOVE_TO,
 }
 

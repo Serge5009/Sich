@@ -9,6 +9,7 @@ public class Building : MonoBehaviour
     public BUILDING buildID;
 
     public List<int> resourcesInside;  //  All resources inside the building (construction or production)
+    public bool accessToStorage;
 
     [SerializeField] List<int> constructCost;    //  Cost to build
     [SerializeField] int constructLabourCost;    //  Labour to build
@@ -32,9 +33,20 @@ public class Building : MonoBehaviour
 
     public void BuildingBuild()
     {
+        gameManager = GameManager.gameManager;
+
+        //  Fetch data
         buildName = buildingSO.buildName;
         buildID = buildingSO.buildID;
         constructCost = buildingSO.constructCost;
         constructLabourCost = buildingSO.constructLabourCost;
+        accessToStorage = buildingSO.accessToStorage;
+
+        //  Add to lists
+        gameManager.constructedBuildings.Add(this);
+        if(accessToStorage)
+            gameManager.warehouses.Add(this);
+
+
     }
 }

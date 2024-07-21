@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     public List<ResourceSO> allResources;  //  Lists all resources that exist in the game
     public List<BuildingSO> allBuildings;  //  Lists all buildings that exist in the game
 
+    public List<Building> constructedBuildings; //  Buildings constructed
+    public List<Building> warehouses;           //  Warehouses constructed
+    public List<ResSource> resSources;          //  Res sources in the game
+
+
     //  References
     [SerializeField] UIController uiController;
     [SerializeField] BuildMode buildMode;
@@ -42,6 +47,14 @@ public class GameManager : MonoBehaviour
         //  Compare resource list
         if (resources.Count != (int)RES.NUM_RES)
             Debug.LogWarning("Resource list count warning!");
+
+        //  Initiate lists
+        if (constructedBuildings.Count == 0)
+            constructedBuildings = new();
+        if (warehouses.Count == 0)
+            warehouses = new();
+        if (resSources.Count == 0)
+            resSources = new();
     }
 
     void Update()

@@ -7,9 +7,16 @@ public class ResSource : MonoBehaviour
     public RES resType;
     public int amountLeft;
 
+    //  References
+    public GameManager gameManager;
+
     void Start()
     {
-        
+        gameManager = GameManager.gameManager;
+
+        //  Add to list
+        if (!gameManager.resSources.Contains(this))
+            gameManager.resSources.Add(this);
     }
 
     void Update()
