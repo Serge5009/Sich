@@ -15,9 +15,15 @@ public class Construction : MonoBehaviour
     public List<int> resDeposited;      //  Cost to build
     public int labourDone;              //  Labour to build
 
+    public List<int> resInDelivery;     //  Currently being delivered
+
+    //  References
+    public Building thisBuilding;
 
     void Start()
     {
+        thisBuilding = GetComponent<Building>();
+
         constructCost = buildingSO.constructCost;
         constructLabourCost = buildingSO.constructLabourCost;
         buildName = buildingSO.buildName;

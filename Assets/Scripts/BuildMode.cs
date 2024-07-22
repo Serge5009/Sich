@@ -98,7 +98,7 @@ public class BuildMode : MonoBehaviour
 
         Construction newConstructScript = newBuilding.AddComponent<Construction>();                                         //  Add Construction script
         newConstructScript.buildingSO = buildingToBuild;                                                                    //  Attach data
-
+        gameManager.constructions.Add(newConstructScript);                                                                  //  Add to GameManager list
 
         //  Exiting build mode
         ExitBuildMode();

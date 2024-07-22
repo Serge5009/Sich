@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public List<Building> constructedBuildings; //  Buildings constructed
     public List<Building> warehouses;           //  Warehouses constructed
     public List<ResSource> resSources;          //  Res sources in the game
+    public List<Construction> constructions;    //  Active construction projects
+    public List<Pop> pops;                      //  Every pop
 
 
     //  References
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
             warehouses = new();
         if (resSources.Count == 0)
             resSources = new();
+        if (constructions.Count == 0)
+            constructions = new();
     }
 
     void Update()

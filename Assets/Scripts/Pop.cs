@@ -18,6 +18,7 @@ public class Pop : MonoBehaviour
 
     //  Extra info
     public Building nearestWarehouse;
+    public Construction constructedBuilding;
     public ResSource minedResource;
     public GameObject headingTo;
 
@@ -31,6 +32,11 @@ public class Pop : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.gameManager;
+
+        //  Add to list
+        if (!gameManager.pops.Contains(this))
+            gameManager.pops.Add(this);
+
 
         //  Randomization
         periodicUpdateTime = Random.Range(periodicUpdateTime, periodicUpdateTime * 1.05f);
@@ -68,6 +74,11 @@ public class Pop : MonoBehaviour
                 UpdateMineState();
                                
                 break;
+
+            case POP_STATE.BUILD:
+                UpdateBuildState();
+                               
+                break;
             case POP_STATE.MOVE_TO:
                 transform.position += (target.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
                 break;
@@ -78,6 +89,8 @@ public class Pop : MonoBehaviour
         if(headingTo)
             transform.position += (headingTo.transform.position - transform.position).normalized * popSpeed * Time.deltaTime;
     }
+
+
 
     void UpdateMineState()
     {
@@ -123,6 +136,38 @@ public class Pop : MonoBehaviour
         }
     }
 
+    void UpdateBuildState()
+    {
+        //  Find a required resource
+        for (int i = 0; i < constructedBuilding.constructCost.Count; i++)
+        {
+            int needed = constructedBuilding.constructCost[i];
+            int deposited = constructedBuilding.resDeposited[i];
+            if (deposited < needed)
+            {
+                //  If available in storage
+                if(gameManager.resources[i] > 0)
+                {
+                    //  Figure out how much to take
+                    int canDeliver = gameManager.resources[i];
+                    if (canDeliver > carryCapacity)
+                        canDeliver = carryCapacity;
+
+                    if (canDeliver <= 0)
+                        Debug.LogWarning("Error booking a delivery");
+
+                    DeliveryManager.deliveryManager.CreateDelivery(FindClosestWarehouse(transform.position), constructedBuilding.thisBuilding, (RES)i, canDeliver, this);
+                }
+                else    //  Complain that not enough resource
+                {
+
+                }
+            }
+
+        }
+
+
+    }
 
     public void DepositAllResourceToStorage()
     {
@@ -204,6 +249,8 @@ public enum POP_STATE
 {
     IDLE,
     MINE,
+    BUILD,
     MOVE_TO,
+
 }
 
